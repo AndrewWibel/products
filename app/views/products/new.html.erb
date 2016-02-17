@@ -1,0 +1,20 @@
+<h1>New Product</h1>
+<form action='/products/create' method='post'>
+	<input type='hidden' value='<%= form_authenticity_token %>' name='authenticity_token'>
+	Name
+	<input type='text' name='name'>
+	Description
+	<input type='text' name='description'>
+	Price
+	<input type='text' name='pricing'>
+	Category
+	<select name='category_id'>
+		<option value='1' name='electronics'>Electronics</option>
+		<option value='2' name='household'>Household</option>
+		<option value='3' name='gardening'>Gardening</option>
+		<option value='4' name='automotive'>Automotive</option>
+		<option value='5' name='ninjas'>Ninjas</option>
+	</select>
+	<input type='submit' value='Create'>
+</form>
+<a href="/products">Back</a>

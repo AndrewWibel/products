@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<h2>Listing products</h2>
+		<table class="table table-bordered">
+		<thead>
+	  		<tr>
+	    	<th>Name</th>
+	    	<th>Description</th>
+	    	<th>Price</th>
+	    	<th></th>
+	  		</tr>
+		</thead>
+		<tbody>
+			<% @products.each do |products| %>
+	  		<tr>
+	    	<td><%= products.name %></td>
+	    	<td><%= products.description %></td>
+	    	<td><%= products.pricing %></td>
+	    	<td><a href='/products/<%= products.id %>'>Show</a> | <a href="/products/<%= products.id %>/edit">Edit</a> | <form action='/products/<%= products.id %>' method='post'>
+	    																													<input type='hidden' value='<%=form_authenticity_token%>' name='authenticity_token'>
+	    																													<input type='hidden' name='_method' value='delete'>
+	    																													<input type='submit' value='Destroy'>									
+	    																												</form></td>
+	  		</tr>
+	  		<% end %>
+	  	</tbody>
+		</table>
+	</div>
+	<a href="/products/new">New Product</a>
+
+</body>
+</html>
+
+
